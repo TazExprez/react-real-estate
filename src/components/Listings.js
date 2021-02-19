@@ -81,10 +81,12 @@ export default class Listings extends Component {
                                 <span className="address">{listing.address}</span>
                                 {/* The div.details is what shows up when you hover over the div.listing. */}
                                 <div className="details">
-                                    <div className="col-md-3">
-                                        <div className="user-img"></div>
+                                    {/* <div className="col-md-3"> */}
+                                    <div className="col-md-4">
+                                        <div className="user-img large"></div>
                                     </div>
-                                    <div className="col-md-9">
+                                    {/* <div className="col-md-9"> */}
+                                    <div className="col-md-8">
                                         {/* The div.user-details is the area to the right of the div.user-img. */}
                                         <div className="user-details">
                                             <span className="user-name">Nina Smith</span>

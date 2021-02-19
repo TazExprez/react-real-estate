@@ -208,6 +208,11 @@
                     -moz-background-size: cover;
                     -o-background-size: cover;
                     background-size: cover;
+
+                    &.large {
+                        width: 75px;
+                        height: 75px;
+                    }
                 }
 
                 .user-details {
