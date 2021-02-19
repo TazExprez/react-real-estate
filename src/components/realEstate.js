@@ -169,6 +169,31 @@ class App extends Component {
             });
         }
 
+        // The following four if statements deal with the filtering of the extras.
+        if (this.state.elevator == true) {
+            newData = newData.filter((item) => {
+                return item.extras.indexOf("elevator") != -1;
+            });
+        }
+
+        if (this.state.finished_basement == true) {
+            newData = newData.filter((item) => {
+                return item.extras.indexOf("finished_basement") != -1;
+            });
+        }
+
+        if (this.state.gym == true) {
+            newData = newData.filter((item) => {
+                return item.extras.indexOf("gym") != -1;
+            });
+        }
+
+        if (this.state.swimming_pool == true) {
+            newData = newData.filter((item) => {
+                return item.extras.indexOf("pool") != -1;
+            });
+        }
+
         // Here we are changing the filteredData property of this.state by changing it to the newData.
         this.setState({
             filteredData: newData
