@@ -40,7 +40,8 @@ class App extends Component {
             // We are temporarily changing the view to long.
             // view: "long"
             // This is the part of the state that deals with searches.
-            search: ""
+            search: "",
+            // This is the part of the state that deals with modals.  I set it to -1 by default because no modals will be viewed.  When a modal is to be viewed, this is set to the index of the listing.
         };
     
         this.change = this.change.bind(this);

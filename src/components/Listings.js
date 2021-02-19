@@ -7,10 +7,12 @@ export default class Listings extends Component {
         super();
         this.state = {
             name: "Joe",
+            modalToView: -1
         };
         
         // We are binding this.loopListings to this class so that when we use this, it's basically hey I know what version of this you are talking about.
         this.loopListings = this.loopListings.bind(this);
+        this.viewModal = this.viewModal.bind(this);
     }
 
     loopListings() {
@@ -55,7 +57,7 @@ export default class Listings extends Component {
                                                 <span>{listing.rooms} bedrooms</span>
                                             </div>
                                         </div>
-                                        <div className="view-btn">
+                                        <div className="view-btn" onClick={() => this.viewModal(index)}>
                                             View Listing
                                         </div>
                                     </div>
@@ -102,7 +104,7 @@ export default class Listings extends Component {
                                                 <span>{listing.rooms} bedrooms</span>
                                             </div>
                                         </div>
-                                        <div className="view-btn">
+                                        <div className="view-btn" onClick={() => this.viewModal(index)}>
                                             View Listing
                                         </div>
                                     </div>
@@ -118,6 +120,14 @@ export default class Listings extends Component {
                     </div>
                 );
             }
+        });
+    }
+
+    viewModal(listingIndex) {
+        this.setState({
+            modalToView: listingIndex
+        }, () => {
+            console.log(this.state.modalToView);
         });
     }
 
