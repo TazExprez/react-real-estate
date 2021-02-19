@@ -1,0 +1,37 @@
+header {
+    background: #0C002B;
+    color: white;
+    // You have to use overflow: auto; for now because if you don't, you will not be able to see the header element's background after using float: right; for the nav element.
+    overflow: auto;
+    padding: 20px 15px;
+
+    .logo {
+        float: left;
+    }
+
+    nav {
+        float: right;
+
+        a {
+            text-decoration: none;
+            color: white;
+            padding: 7px 20px;
+            // text-transform: capitalize;
+            font-weight: 300;
+            font-size: 0.9rem;
+
+            &:hover {
+                color: #FF718E;
+            }
+
+            &.register-btn {
+                background: $pink;
+                padding: 7px 25px;
+                // I think that text-align: center; and color: white; are not needed.
+                // text-align: center;
+                // color: white;
+                border-radius: 5px;
+            }
+        }
+    }    
+}
