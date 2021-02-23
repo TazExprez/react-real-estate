@@ -4,6 +4,7 @@ import Header from "./Header.js";
 import Filter from "./Filter.js";
 import Listings from "./Listings.js";
 import listingsData from "./data/listingsData.js";
+import Modal from "./Modal.js";
 
 import "../sass/main.scss";
 
@@ -42,6 +43,8 @@ class App extends Component {
             // This is the part of the state that deals with searches.
             search: "",
             // This is the part of the state that deals with modals.  I set it to -1 by default because no modals will be viewed.  When a modal is to be viewed, this is set to the index of the listing.
+            modalSelection: -1,
+            modalData: ""
         };
     
         this.change = this.change.bind(this);
@@ -49,6 +52,8 @@ class App extends Component {
         this.populateForms = this.populateForms.bind(this);
         // We're binding changeView to this class so that when we pass it down to a child component, we're still keeping the same reference of this.
         this.changeView = this.changeView.bind(this);
+        this.viewModal = this.viewModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     }
 
     // This is going to run a method before the whole component even shows up on the page.  Before this component shows up, we want the listings to be arranged from lowest priced to highest priced.  Before the component even mounts, it will run this.
@@ -248,9 +253,21 @@ class App extends Component {
         });
     }
 
+    // This is the method that opens a modal for a particular listing.
+    viewModal(listingIndex) {
+        this.setState({
+            modalSelection: listingIndex
+        });
+    }
+
+    // This is the method that closes the modal.
+    closeModal() {
+        this.setState({
+            modalSelection: -1
+        });
+    }
+
     render() {
-        // console.log(this.state.listingsData);
-        // console.log(this.state);
         return(
             <div>
                 <Header />
@@ -261,7 +278,8 @@ class App extends Component {
                     <Filter change={this.change} globalState={this.state} populateAction={this.populateForms} />
                     {/* <Listings listingsData={this.state.listingsData} /> */}
                     {/* Instead of using the listingsData, we are now going to use the filteredData. */}
-                    <Listings listingsData={this.state.filteredData} change={this.change} globalState={this.state} changeView={this.changeView} />
+                    <Listings listingsData={this.state.filteredData} change={this.change} globalState={this.state} changeView={this.changeView} viewModal={this.viewModal} />
+                    <Modal modalSelection={this.state.modalSelection} modalData={this.state.filteredData[this.state.modalSelection]} closeModal={this.closeModal} />
                 </section>
             </div>
         );

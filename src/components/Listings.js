@@ -7,12 +7,11 @@ export default class Listings extends Component {
         super();
         this.state = {
             name: "Joe",
-            modalToView: -1
         };
         
         // We are binding this.loopListings to this class so that when we use this, it's basically hey I know what version of this you are talking about.
         this.loopListings = this.loopListings.bind(this);
-        this.viewModal = this.viewModal.bind(this);
+        // this.viewModal = this.viewModal.bind(this);
     }
 
     loopListings() {
@@ -57,7 +56,8 @@ export default class Listings extends Component {
                                                 <span>{listing.rooms} bedrooms</span>
                                             </div>
                                         </div>
-                                        <div className="view-btn" onClick={() => this.viewModal(index)}>
+                                        {/* This viewModal() will run when someone clicks the View Listing button on any of the listings.  It takes in the listing's index as a parameter so that the button in each listing displays a modal with that particular listing's properties. */}
+                                        <div className="view-btn" onClick={() => this.props.viewModal(index)}>
                                             View Listing
                                         </div>
                                     </div>
@@ -104,7 +104,7 @@ export default class Listings extends Component {
                                                 <span>{listing.rooms} bedrooms</span>
                                             </div>
                                         </div>
-                                        <div className="view-btn" onClick={() => this.viewModal(index)}>
+                                        <div className="view-btn" onClick={() => this.props.viewModal(index)}>
                                             View Listing
                                         </div>
                                     </div>
@@ -123,13 +123,20 @@ export default class Listings extends Component {
         });
     }
 
-    viewModal(listingIndex) {
-        this.setState({
-            modalToView: listingIndex
-        }, () => {
-            console.log(this.state.modalToView);
-        });
-    }
+    // Moved to realEstate.js file.
+    // viewModal(listingIndex) {
+    //     this.setState({
+    //         modalData: listingIndex
+    //     }, () => {
+    //         console.log(this.state.modalData);
+    //     });
+
+        // return (
+        //     <div className="modal-box">
+                
+        //     </div>
+        // );
+    // }
 
     render() {
         return(
