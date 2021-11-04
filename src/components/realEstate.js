@@ -1,3 +1,5 @@
+// const { hot } = require("react-hot-loader");
+
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import Header from "./Header.js";
@@ -67,7 +69,7 @@ class App extends Component {
         var listingsData = this.state.listingsData.sort((a, b) => {
             return a.price - b.price;
         });
-    
+        
         this.setState({
             listingsData
         });
@@ -231,7 +233,7 @@ class App extends Component {
         homeTypes = new Set(homeTypes);
         homeTypes = [...homeTypes];
         homeTypes = homeTypes.sort();
-
+        
         // bedrooms
         var bedrooms = this.state.listingsData.map((item) => {
             return item.rooms;
@@ -288,6 +290,6 @@ class App extends Component {
 
 const app = document.getElementById("app");
 
-ReactDOM.render(<App />, app);
+ReactDOM.render(<App />, app); 
 
 module.hot.accept();
